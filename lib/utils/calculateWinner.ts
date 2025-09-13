@@ -1,6 +1,6 @@
-import { Squares, SquareValue } from "@/types/game";
+import { Squares, SquareValue, WinnerResult } from "@/types/game";
 
-const calculateWinner = (squares: Squares): SquareValue => {
+const calculateWinner = (squares: Squares): WinnerResult => {
   const winningLines: number[][] = [
     [0, 1, 2], //first row
     [3, 4, 5], //second row
@@ -15,10 +15,16 @@ const calculateWinner = (squares: Squares): SquareValue => {
   for (let i:number = 0; i < winningLines.length; i++){
     const [a, b, c] = winningLines[i];
     if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
-      return squares[a];
+      return {
+        winner: squares[a],
+        line: [a, b, c]
+      };
     }
   }
-  return null;
+  return {
+    winner: null,
+    line: []
+  };
 }
 
 export default calculateWinner;
