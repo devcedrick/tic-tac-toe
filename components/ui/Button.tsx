@@ -8,7 +8,8 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({label, onClick, bgColor = "#FB6B23"}) => {
   return (
-    <div className='px-10 py-3.5 bg-[${bgColor}] rounded-lg font-semibold text-white cursor-pointer' onClick={onClick} style={{backgroundColor : bgColor}}>
+    <div className='px-10 py-3.5 rounded-lg font-semibold cursor-pointer text-white transition-transform duration-400 hover:scale-105' onClick={onClick} 
+      style={{backgroundColor : "#C84504"}}>
       {label}
     </div>
   )
