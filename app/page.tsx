@@ -1,16 +1,17 @@
 "use client"
 
-import Image from "next/image";
 import Board from "@/components/layout/Board";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Squares, History } from "@/types/game";
+import { GameContext } from "@/contexts/GameContext";
+import { useGameContext } from "@/hooks/useGameContext";
 
 export default function Home() {
   const [currentMove, setCurrentMove] = useState<number>(0);
-  const [history, setHistory] = useState<History>([Array(9).fill(null)]);
+  const {history, setHistory} = useGameContext();
   let xIsNext: boolean = currentMove % 2 === 0;
   let currentSquares = history[currentMove];
-
+  
   const handlePlay = (newSquares: Squares) => {
     const newHistory: History = [...history.slice(0, currentMove+1), newSquares];
     setHistory(newHistory);

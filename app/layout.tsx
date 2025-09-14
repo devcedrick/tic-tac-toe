@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import GameHistory from "@/components/layout/GameHistory";
+import GameContextProvider from "@/contexts/GameContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +27,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-screen grid grid-cols-[2fr_1fr]`}
       >
-        {children}
+        <GameContextProvider>
+          {children}
+          <div className="flex items-center justify-start h-screen">
+            <GameHistory/>
+          </div>
+        </GameContextProvider>
       </body>
     </html>
   );

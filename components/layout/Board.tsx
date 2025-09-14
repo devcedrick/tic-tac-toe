@@ -16,10 +16,14 @@ const Board: React.FC<BoardProps> = ({xIsNext, squares, onPlay}) => {
 
   const handleClick = (index: number) => {
     if(winRes.winner || squares[index])
-      return;
+      return; 
+    
 
     const newSquares = squares.slice();
     newSquares[index] = xIsNext ? 'X' : 'O';
+
+    
+
     onPlay(newSquares);
   };
 
