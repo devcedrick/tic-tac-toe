@@ -7,8 +7,8 @@ interface GameStatsCardProps {
 
 const GameStatsCard: React.FC<GameStatsCardProps> = ({label, value}) => {
   return (
-    <div className='bg-[#C8F9F2] rounded-lg p-5 flex flex-col justify-center gap-3'>
-      <div className='flex flex-1 justify-center text-2xl font-semibold' >
+    <div className='bg-[#C8F9F2] rounded-lg p-3 flex flex-col justify-center gap-1.5'>
+      <div className='flex flex-1 justify-center text-xl font-semibold' >
         {value}
       </div>
       <div className='flex flex-1 justify-center text-sm text-gray-500'>
