@@ -8,4 +8,5 @@ const GameStats = ({children}:{children: React.ReactNode}) => {
   )
 }
 
+
 export default GameStats
