@@ -6,9 +6,10 @@ interface SquareProps {
   isWinningSquare: boolean;
   winner: SquareValue
   onSquareClick: () => void;
+  disabled: boolean;
 }
 
-const Square: React.FC<SquareProps> = ({value, onSquareClick, isWinningSquare, winner}) => {
+const Square: React.FC<SquareProps> = ({value, onSquareClick, isWinningSquare, winner, disabled}) => {
   let textColor:string = value === 'X' ? 'text-[#1D9871]' : 'text-[#FB6B23]';
   const getWinningBgColor = () => {
     if(!isWinningSquare) return 'bg-white';
@@ -20,18 +21,27 @@ const Square: React.FC<SquareProps> = ({value, onSquareClick, isWinningSquare, w
     return winner === 'X' ? 'border border-[#1D9871] border-3' : 'border border-[#FB6B23] border-3';
   }
 
+  const getCursorStyle = () => {
+  if (disabled || !!value) {
+    return "cursor-not-allowed";
+  }
+  return "cursor-pointer";
+}
+
   return (
     <button className={`w-50 
       aspect-square 
       rounded-xl 
-      cursor-pointer 
       ${getWinningBgColor()}
       ${getWinningBorder()}
       text-8xl
       font-semibold 
       p-0
+      transition-transform duration-200
       hover:scale-102
-      ${textColor}`} onClick={onSquareClick}
+      ${textColor}
+      ${getCursorStyle()}`} onClick={onSquareClick}
+      disabled = {disabled || !!value}
       >
       {value}
     </button>

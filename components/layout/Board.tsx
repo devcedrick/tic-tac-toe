@@ -9,17 +9,21 @@ interface BoardProps {
   xIsNext: boolean;
   squares: Squares;
   onPlay: (newSquares: Squares) => void;
+  gameOver: boolean;
 }
 
-const Board: React.FC<BoardProps> = ({xIsNext, squares, onPlay}) => {
+const Board: React.FC<BoardProps> = ({xIsNext, squares, onPlay, gameOver}) => {
   const winRes: WinnerResult = calculateWinner(squares);
 
   const handleClick = (index: number) => {
-    if(winRes.winner || squares[index])
-      return;
+    if(gameOver || squares[index])
+      return; 
 
     const newSquares = squares.slice();
     newSquares[index] = xIsNext ? 'X' : 'O';
+
+
+
     onPlay(newSquares);
   };
 
@@ -34,7 +38,8 @@ const Board: React.FC<BoardProps> = ({xIsNext, squares, onPlay}) => {
               value={value}
               isWinningSquare={isWinningSquare(index)}
               winner={winRes.winner}
-              onSquareClick={() => handleClick(index)}/>
+              onSquareClick={() => handleClick(index)}
+              disabled = {gameOver}/>
           ))
         }
     </div>
