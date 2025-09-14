@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { GameStatsValues, SquareValue } from '@/types/game';
 import { saveStatsToLocalStorage, getStatsFromLocalStorage } from '@/lib/utils/localStorage';
 
@@ -11,7 +11,7 @@ export const useGameStats = () => {
     saveStatsToLocalStorage(gameStats);
   }, [gameStats]);
 
-  const updateStats = (winner: SquareValue) => {
+  const updateStats = useCallback((winner: SquareValue) => {
     setGameStats(prev => {
       const newStats = { 
         ...prev, 
@@ -28,9 +28,9 @@ export const useGameStats = () => {
       
       return newStats;
     });
-  };
+  }, []);
 
-  const resetStats = () => {
+  const resetStats = useCallback(() => {
     const defaultStats = {
       xScore: 0,
       oScore: 0,
@@ -39,7 +39,7 @@ export const useGameStats = () => {
     };
     
     setGameStats(defaultStats);
-  };
+  }, []);
 
   return {
     gameStats,
