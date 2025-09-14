@@ -22,8 +22,6 @@ const Board: React.FC<BoardProps> = ({xIsNext, squares, onPlay, gameOver}) => {
     const newSquares = squares.slice();
     newSquares[index] = xIsNext ? 'X' : 'O';
 
-
-
     onPlay(newSquares);
   };
 
