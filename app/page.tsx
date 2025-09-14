@@ -55,7 +55,7 @@ export default function Home() {
       <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} gameOver={gameOver}/>
       <div className="flex gap-10">
         <Button label="New Game" onClick={resetBoard}/>
-        <Button label="Reset Stats" onClick={onResetStats} bgColor="#1D9871"/>
+        <Button label="Reset Stats" onClick={onResetStats} bgColor="#0C6E5F"/>
       </div>
     </div>
   );
