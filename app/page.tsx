@@ -1,16 +1,14 @@
 "use client"
 
 import Board from "@/components/layout/Board";
-import { useContext, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Squares, History } from "@/types/game";
-import { GameContext } from "@/contexts/GameContext";
 import { useGameContext } from "@/hooks/useGameContext";
 import calculateWinner from "@/lib/utils/calculateWinner";
 
 export default function Home() {
-  const [currentMove, setCurrentMove] = useState<number>(0);
-  const [hasUpdatedStats, setHasUpdatedStats] = useState(false);
-  const {history, setHistory, updateStats} = useGameContext();
+  //const [hasUpdatedStats, setHasUpdatedStats] = useState(false);
+  const {history, setHistory, updateStats, currentMove, setCurrentMove} = useGameContext();
   let xIsNext: boolean = currentMove % 2 === 0;
   let currentSquares = history[currentMove];
 
@@ -31,13 +29,15 @@ export default function Home() {
     
   
   const handlePlay = (newSquares: Squares) => {
+    if(gameOver) return;
+
     const newHistory: History = [...history.slice(0, currentMove+1), newSquares];
     
     if (hasStatsBeenUpdated.current) {
       hasStatsBeenUpdated.current = false;
     }
     setHistory(newHistory);
-    setCurrentMove(newHistory.length-1);
+    setCurrentMove(newHistory.length - 1);
   };
 
   return (
