@@ -10,7 +10,7 @@ interface SquareProps {
 }
 
 const Square: React.FC<SquareProps> = ({value, onSquareClick, isWinningSquare, winner, disabled}) => {
-  let textColor:string = value === 'X' ? 'text-[#1D9871]' : 'text-[#FB6B23]';
+  const textColor:string = value === 'X' ? 'text-[#1D9871]' : 'text-[#FB6B23]';
   const getWinningBgColor = () => {
     if(!isWinningSquare) return 'bg-white';
     return winner === 'X' ? 'bg-[#DAFBF7]' : 'bg-[#FED7C3]'
