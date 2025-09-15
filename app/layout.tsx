@@ -27,11 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-screen grid grid-cols-[2fr_1fr]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-screen grid grid-cols-1 lg:grid-cols-[2fr_1fr] `}
       >
         <GameContextProvider>
           {children}
-          <div className="flex items-center justify-start h-screen">
+          <div className="flex items-start justify-center lg:justify-start h-screen">
             <GameHistory/>
           </div>
         </GameContextProvider>
