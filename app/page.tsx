@@ -14,8 +14,8 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const {history, setHistory, updateStats, currentMove, setCurrentMove, resetBoard, resetStats} = useGameContext();
 
-  let xIsNext: boolean = currentMove % 2 === 0;
-  let currentSquares = history[currentMove];
+  const xIsNext: boolean = currentMove % 2 === 0;
+  const currentSquares = history[currentMove];
 
   const {winner} = calculateWinner(currentSquares);
   const isDraw = !winner && currentSquares.every(square =>
