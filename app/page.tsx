@@ -62,7 +62,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-5">
+    <div className="flex flex-col items-center justify-center lg:h-screen gap-5 py-15">
       <Header/>
       <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} gameOver={gameOver}/>
       <div className="flex flex-col lg:flex-row gap-3 lg:gap-10 w-2/3 lg:w-max max-w-110">
