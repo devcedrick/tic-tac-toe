@@ -37,10 +37,8 @@ const GameResultModal: React.FC<GameResultModalProps> = ({ isOpen, winner, onPla
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* overlay */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
 
-      {/* modal */}
       <div className="relative text-slate-900 rounded-2xl p-15 max-w-lg w-full shadow-2xl transform transition-all duration-200 ease-out" style={{
         backgroundColor: getBGColorHex()
       }}>

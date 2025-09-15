@@ -29,7 +29,7 @@ const Square: React.FC<SquareProps> = ({value, onSquareClick, isWinningSquare, w
 }
 
   return (
-    <button className={`w-40 
+    <button className={`w-38
       aspect-square 
       rounded-xl 
       ${getWinningBgColor()}
