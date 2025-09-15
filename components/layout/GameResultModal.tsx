@@ -39,7 +39,7 @@ const GameResultModal: React.FC<GameResultModalProps> = ({ isOpen, winner, onPla
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative text-slate-900 rounded-2xl p-15 max-w-lg w-full shadow-2xl transform transition-all duration-200 ease-out" style={{
+      <div className="relative text-slate-900 rounded-2xl p-8 lg:p-15 max-w-lg w-5/6 lg:w-full shadow-2xl transform transition-all duration-200 ease-out" style={{
         backgroundColor: getBGColorHex()
       }}>
         <div className="text-center">

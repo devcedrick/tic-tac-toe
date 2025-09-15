@@ -65,7 +65,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center h-screen gap-5">
       <Header/>
       <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} gameOver={gameOver}/>
-      <div className="flex gap-10">
+      <div className="flex flex-col lg:flex-row gap-3 lg:gap-10 w-2/3 lg:w-max max-w-110">
         <Button label="New Game" onClick={resetBoard}/>
         <Button label="Reset Stats" onClick={onResetStats} bgColor="#0C6E5F"/>
       </div>
