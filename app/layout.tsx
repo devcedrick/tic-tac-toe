@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <GameContextProvider>
           {children}
-          <div className="flex items-start justify-center lg:justify-start h-screen">
+          <div className="flex items-start lg:items-center justify-center lg:justify-start h-screen">
             <GameHistory/>
           </div>
         </GameContextProvider>
