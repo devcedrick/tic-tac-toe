@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { GameStatsValues, SquareValue } from '@/types/game';
 import { saveStatsToLocalStorage, getStatsFromLocalStorage } from '@/lib/utils/localStorage';
+import { useGameContext } from './useGameContext';
 
 export const useGameStats = () => {
   const [gameStats, setGameStats] = useState<GameStatsValues>(() => 

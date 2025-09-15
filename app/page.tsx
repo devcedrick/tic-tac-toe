@@ -6,10 +6,12 @@ import { Squares, History } from "@/types/game";
 import { useGameContext } from "@/hooks/useGameContext";
 import calculateWinner from "@/lib/utils/calculateWinner";
 import Button from "@/components/ui/Button";
+import GameResultModal from "@/components/layout/GameResultModal";
 
 export default function Home() {
   //const [hasUpdatedStats, setHasUpdatedStats] = useState(false);
-  const {history, setHistory, updateStats, currentMove, setCurrentMove, resetStats} = useGameContext();
+  const [showModal, setShowModal] = useState(false);
+  const {history, setHistory, updateStats, currentMove, setCurrentMove, resetBoard, resetStats} = useGameContext();
   let xIsNext: boolean = currentMove % 2 === 0;
   let currentSquares = history[currentMove];
 
@@ -25,6 +27,7 @@ export default function Home() {
     if (gameOver && !hasStatsBeenUpdated.current) {
       updateStats(winner);
       hasStatsBeenUpdated.current = true;
+      setShowModal(true);
     }
   }, [gameOver, winner, updateStats]);
     
@@ -41,14 +44,20 @@ export default function Home() {
     setCurrentMove(newHistory.length - 1);
   };
 
-  const resetBoard = ():void => {
-    setCurrentMove(0);
-  }
-
   const onResetStats = ():void => {
     resetBoard();
     resetStats();
   }
+
+  const handlePlayAgain = () => {
+    resetBoard();
+    setShowModal(false);
+  }
+
+  const closeModal = () => {
+    setShowModal(false);
+  }
+
 
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-5">
@@ -57,6 +66,7 @@ export default function Home() {
         <Button label="New Game" onClick={resetBoard}/>
         <Button label="Reset Stats" onClick={onResetStats} bgColor="#0C6E5F"/>
       </div>
+      <GameResultModal isOpen={showModal} winner={winner} onPlayAgain={handlePlayAgain} onClose={closeModal}/>
     </div>
   );
 }
