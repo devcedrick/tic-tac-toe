@@ -14,6 +14,7 @@ interface GameContextType {
   updateStats: ReturnType<typeof useGameStats>['updateStats'];
   resetStats: ReturnType<typeof useGameStats>['resetStats'];
   jumpTo: (move: number) => void;
+  resetBoard: () => void;
 }
 
 export const GameContext = createContext<GameContextType | undefined>(undefined);
@@ -27,6 +28,10 @@ const GameContextProvider = ({children}:{children:React.ReactNode}) => {
     setCurrentMove(move);
   };
 
+  const resetBoard = ():void => {
+    setCurrentMove(0);
+  }
+
   const contextValue = {
     history,
     setHistory,
@@ -35,7 +40,8 @@ const GameContextProvider = ({children}:{children:React.ReactNode}) => {
     gameStats,
     updateStats,
     resetStats,
-    jumpTo
+    jumpTo, 
+    resetBoard
   }
 
   return(
